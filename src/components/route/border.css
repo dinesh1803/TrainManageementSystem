@@ -1,0 +1,44 @@
+table{
+    border: 1px solid;
+    
+  }
+  th{
+    font-size: 32px;
+    border: 1px solid;
+  }
+  tr:hover {background-color: coral;}
+
+  td{
+
+    border: 1px solid;
+    height: 50px;
+  vertical-align: center;
+  font-size: 25px;
+
+  }
+
+  table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid;
+    border-collapse: collapse;
+ 
+  }
+  button{
+    background-color:rgb(255, 136, 0); 
+    border: none;
+    color: rgb(109, 43, 43);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+  
+    font-size: 15px;
+  }
+  li{
+    text-decoration: none;
+    
+  }
+  li:hover{
+
+font-size: 20px;
+  }

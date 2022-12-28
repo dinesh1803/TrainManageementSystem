@@ -1,0 +1,41 @@
+.View {
+  background-image: url('/train.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1500px 1080px;
+  height: 100vh;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
+
+
+}
+
+.form {
+  color: white;
+  margin-left: 200px;
+  background-color: rgb(6, 6, 150);
+  border-radius: 5mm;
+  height: 250px;
+}
+.Regform{
+  color: white;
+  margin-left: 200px;
+  background-color: rgb(6, 6, 150);
+  border-radius: 5mm;
+  height: 350px;
+}
+
+
+
+button {
+  border-radius: 5mm;
+  background-color: wheat;
+  border: rgb(8, 7, 1);
+}
+
+input {
+  border-radius: 2mm;
+}
