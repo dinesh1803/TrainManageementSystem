@@ -5,7 +5,7 @@ import { Register } from './components/Register';
 import React, { Component } from 'react'
 import Home from './components/Home';
 import NavigateBar from './components/NavigateBar';
-import About from './components/About';
+import About from './components/route/About';
 import { TrainRoutes } from './components/route/TrainRoutes';
 import PostRoutes from './components/route/PostRoutes';
 
