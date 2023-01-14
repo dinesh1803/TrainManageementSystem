@@ -1,0 +1,103 @@
+.View {
+  background-image: url('/train.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
+
+
+}
+
+.form {
+  color: white;
+  margin-left: 200px;
+  background-color: rgb(224, 121, 116);
+  border-radius: 5mm;
+  height: 300px;
+  width: 300px;
+}
+.Regform{
+  color: white;
+  margin-left: 200px;
+  background-color:  rgb(224, 121, 116);
+  border-radius: 5mm;
+  height: 350px;
+  width: 300px;
+}
+
+
+
+/* button {
+  border-radius: 5mm;
+  background-color: wheat;
+  border: rgb(8, 7, 1);
+} */
+
+input {
+  border-radius: 2mm;
+}
+
+.Link{
+  
+  color: antiquewhite;
+}
+
+
+
+/* Delete button CSS */
+.button-del {
+
+  align-items: center;
+  margin: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  /* box-shadow: 0 0.7em 1.5em -0.5em #14a73e98; */
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-del:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+  background: rgb(246, 4, 4);
+}
+
+.button-update {
+  align-items: center;
+  margin: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  /* box-shadow: 0 0.7em 1.5em -0.5em #14a73e98; */
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-update:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+  background:green;
+}

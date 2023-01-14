@@ -1,0 +1,16 @@
+.background {
+
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+.align {
+  height: 300px;
+  width: 400px;
+  justify-content: left;
+  text-decoration: none;
+}
