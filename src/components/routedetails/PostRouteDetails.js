@@ -105,10 +105,10 @@ const PostRouteDetails = () => {
                         <input type={"text"} placeholder="HH:mm:ss" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br></br><br></br>
                     </div>
                     <div>
-                        <button type='submit'>-Add-</button><br></br><br />
+                        <button className='button-update ' type='submit'>-Add-</button><br></br><br />
                     </div>
                     <div>
-                        <Link to={"/timeschedule"}> Back</Link>
+                        <Link to={"/timeschedule"}> <button className='button-update '>Back</button></Link>
                     </div>
                 </form>
             </div>

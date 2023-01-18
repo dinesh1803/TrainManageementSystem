@@ -39,7 +39,7 @@ const PostStationDetails = () => {
                     <h3>Add Stations</h3><br/><br/>
                     <div className='' >
                         <label htmlFor='text'>Enter Station Name</label><br/><br/>
-                        <input className='box' type={'text'} placeholder="station name.." name='stationName' value={stations.stationName} onChange={changeHandler} required ></input><br></br><br></br>
+                        <input  type={'text'} placeholder="station name.." name='stationName' value={stations.stationName} onChange={changeHandler} required ></input><br></br><br></br>
                     </div>
                     <div>
                         <button className='button-update ' onClick={clickHandler}>-Add-</button><br/><br/>

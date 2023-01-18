@@ -14,7 +14,7 @@ import Stations from './components/station/Stations';
 import PostStationDetails from './components/station/PostStationDetails';
 import GetrouteDetails from './components/routedetails/GetrouteDetails';
 import PostRouteDetails from './components/routedetails/PostRouteDetails';
-import Search from './components/User Component/search';
+import Search from './components/User Component/Search';
 import SearchTrain from './components/User Component/SearchTrain';
 
 

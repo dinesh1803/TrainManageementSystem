@@ -53,8 +53,9 @@ const Stations = () => {
     return (
         <div><br/>
          <Link to='/nav'>
-                <button className='button-update '>back to Home page</button>
+                <button className='button-update '>‹‹‹ back to Home page</button>
             </Link>
+            <h1>station</h1>
             <nav>
                 <u id="nav">
                     <NavLink to="/addstation"><button className='button-update '>Add More Station</button></NavLink>

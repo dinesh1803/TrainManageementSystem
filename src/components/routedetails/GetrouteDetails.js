@@ -57,16 +57,19 @@ const GetrouteDetails = () => {
 
     return (
         <div>
+                   <Link to='/nav'  >
+                <button className='button-update '>‹‹‹ back to Home page</button>
+            </Link>
             <nav>
                 <u id="nav">
-                    <li><NavLink to="/addroutedetails">Add More Station</NavLink></li>
+                    <li><NavLink to="/addroutedetails"><button className='button-update '> Add More Station</button></NavLink></li>
 
                 </u>
-            </nav><br />
+            </nav>
             
 
             <div className='SearchBar'>
-                <label htmlFor='text'>Search By Train or Station Name</label><br /><br />
+                <label htmlFor='text'>Search By Train or Station Name</label><br/>
                 <input className='SearchInput' type='search' name='searchTrain' placeholder="search...."
                     value={searchTrain} onInput={(e) => searchHandler(e)} ></input><br /><br />
             </div>
@@ -74,7 +77,7 @@ const GetrouteDetails = () => {
                 <thead>
                     <tr>
                         <th>S.No</th>
-                        <th>RouteId</th>
+                        <th>RouteName</th>
                         <th>Train Name</th>
                         <th>Station Name</th>
                         <th>Train Id</th>
@@ -90,7 +93,7 @@ const GetrouteDetails = () => {
                             <tr key={routedetail.id}>
 
                                 <td>{index + 1}</td>
-                                <td>{routedetail?.train.route.routeId}</td>
+                                <td>{routedetail?.train.route.routeName}</td>
                                 <td>{routedetail?.train.trainName}</td>
 
                                 <td>{routedetail.station?.stationName}</td>
@@ -107,9 +110,7 @@ const GetrouteDetails = () => {
                     }
                 </tbody>
             </table><br />
-            <Link to='/nav'>
-                <button >back to Home page</button><br /><br />
-            </Link>
+     
         </div>
     ) 
 }

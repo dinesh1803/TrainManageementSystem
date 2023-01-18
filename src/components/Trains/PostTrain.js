@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import _ from 'lodash'
-import Select from 'react-select';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PostTrain = () => {
