@@ -36,7 +36,7 @@ const PostTrain = () => {
       .then(response => {
         setAddRoute(response.data)
       })
-  }, [])
+  },[])
 
 
 
