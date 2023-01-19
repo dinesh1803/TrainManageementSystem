@@ -1,59 +1,4 @@
-/* table {
-  border: 1px solid;
 
-
-}
-
-th {
-  font-size: 32px;
-  border: 1px solid;
-  background-color: blanchedalmond;
-} */
-
-/* .pad{
-  padding-left:2px;
-}
-
-tr:hover {
-  background-color: rgb(176, 183, 196);
-}
-
-td {
-
-  border: 1px solid;
-  height: 50px;
-  vertical-align: center;
-  font-size: 25px;
-  padding:25px,5px;
-
-}
-
-table {
-  width: 100%;
-  text-align: center;
-  border: 1px solid;
-  border-collapse: collapse;
-
-} */
-
-/* button {
-  background-color: rgb(54, 223, 32);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  justify-content: center;
-
-  border-radius: 5mm;
- 
- 
-  font-size: 15px;
-}
-
-button:hover {
-  background-color: red;
-  color: white;
-} */
 
 li {
   text-decoration: none;
@@ -165,7 +110,7 @@ h3{
   color: white;
 }
 
-h1{
+.h1{
   text-align: center;
   justify-content: center;
   display: flex;

@@ -17,7 +17,7 @@ const GetTrain = () => {
     axios.get("http://localhost:8080/admin/traindetails/get")
       .then(response => {
         console.log(response.data)
-        setTrains(_.orderBy(response.data,"id"))
+        setTrains(_.orderBy(response.data, "id"))
       })
       .catch(error => {
         console.log(error)
@@ -44,24 +44,23 @@ const GetTrain = () => {
   return (
 
     <div>
-                  <h1> Train Route Details </h1><br />
+      <h1 className='h1'> Train Route Details </h1><br />
 
-        <Link to='/nav'>
-        <button className='button-del '><ImExit/> Home</button>
+      <Link to='/nav'>
+        <button className='button-del '><ImExit /> Home</button>
       </Link>
 
       <u className='add'>
-      <NavLink to="/addtrains"><button className='button-update'>Add More Trains</button></NavLink>
+        <NavLink to="/addtrains"><button className='button-update'>Add More Trains</button></NavLink>
+      </u>
 
-        </u>
-     
-      
+
 
       <table id="customers">
         <thead>
           <tr>
             <th>S.No</th>
-           
+
             <th>Train Number</th>
             <th>Train Name</th>
             <th>Route Name</th>
@@ -75,7 +74,7 @@ const GetTrain = () => {
             trains.map((train, index) =>
               <tr key={train.id}>
                 <td>{index + 1} </td>
-              
+
                 <td> {train.trainNumber} </td>
                 <td> {train.trainName} </td>
                 <td> {train.route?.routeName} </td>
@@ -89,7 +88,7 @@ const GetTrain = () => {
         </tbody>
 
       </table><br />
-  
+
     </div>
   )
 }

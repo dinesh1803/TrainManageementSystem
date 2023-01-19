@@ -39,7 +39,7 @@ const TrainRoutes = () => {
     return (
 
         <div>
-            <h1> Train Route Details </h1><br />
+            <h1 className='h1'> Train Route Details </h1><br />
              <Link to='/nav'>
              <button className='button-del '><ImExit/> Home</button>
             </Link>

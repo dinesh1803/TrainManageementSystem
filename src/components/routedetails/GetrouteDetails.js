@@ -19,7 +19,7 @@ const GetrouteDetails = () => {
             .then(
                 response => {
                     console.log(response.data)
-                    setRouteDetails(_.orderBy(response.data,"train.route.routeId"))
+                    setRouteDetails(_.orderBy(response.data,"train.id"))
                     setFilterRouteDetails(response.data)
                 }
             ).catch(
@@ -58,7 +58,7 @@ const GetrouteDetails = () => {
 
     return (
         <div>
-            <h1>Train Schedule</h1><br></br>
+            <h1  className='h1'>Train Schedule</h1><br></br>
                    <Link to='/nav'  >
                 <button className='button-del '><ImExit/> Home</button>
             </Link>

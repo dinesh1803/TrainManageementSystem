@@ -53,7 +53,7 @@ const Stations = () => {
 
     return (
         <div>
-            <h1 >Station Details</h1><br/>
+            <h1  className='h1'>Station Details</h1><br/>
          <Link to='/nav'>
          <button className='button-del '><ImExit/> Home</button>
             </Link>
