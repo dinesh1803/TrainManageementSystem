@@ -37,7 +37,7 @@ const Search =()=>{
 
 
        
-            <table>
+            <table  id="customers">
                 <thead>
                     <tr>
                         <th>S.No</th>

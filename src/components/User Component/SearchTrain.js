@@ -57,12 +57,7 @@ const SearchTrain = () => {
     return (
   
       <div>
-        <nav>
-          <u id="nav">
-            <li><NavLink to="/addtrains">Add More Trains</NavLink></li>
   
-          </u>
-        </nav>
   
 <div>
     <label>Source</label><br/>
@@ -75,7 +70,7 @@ const SearchTrain = () => {
     
 </div>
 
-        <table>
+        <table  id="customers">
           <thead>
             <tr>
               <th>S.No</th>
