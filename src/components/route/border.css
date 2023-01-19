@@ -71,10 +71,10 @@ li:hover {
 .forms {
   color: white;
   margin-left: 200px;
-  background-color: rgb(226, 102, 80);
+  background-color: lightseagreen;
   border-radius: 5mm;
-  height: fit-content;
-  width: fit-content;
+  height: auto;
+  width: auto;
   justify-content: center;
 
 }
@@ -103,16 +103,23 @@ Link {
   height: 6mm;
 }
 
-nav {
+/* nav {
+  width: 100%;
+  height: 50px;
+  display: flex;
+
+} */
+
+h3{
+  color: black;
+}
+
+.add{
   width: 100%;
   height: 50px;
   display: flex;
   align-items: right;
   justify-content: right;
-}
-
-h3{
-  color: black;
 }
 
 
@@ -156,4 +163,22 @@ h3{
   text-align: center;
   background-color: #04AA6D;
   color: white;
+}
+
+h1{
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  background-color: #04AA6D;
+}
+
+.dropdown-cont{
+  /* padding: 12px 16px;
+  display: block; */
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
+import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
 
 const GetrouteDetails = () => {
@@ -57,15 +58,15 @@ const GetrouteDetails = () => {
 
     return (
         <div>
+            <h1>Train Schedule</h1><br></br>
                    <Link to='/nav'  >
-                <button className='button-update '>‹‹‹ back to Home page</button>
+                <button className='button-del '><ImExit/> Home</button>
             </Link>
-            <nav>
-                <u id="nav">
+            <u className='add'>
                     <li><NavLink to="/addroutedetails"><button className='button-update '> Add More Station</button></NavLink></li>
 
                 </u>
-            </nav>
+          
             
 
             <div className='SearchBar'>

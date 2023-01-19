@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
-import { Link,  } from 'react-router-dom';
-import './Home.css'
 
+import './Home.css'
+import { FaRoad, FaTasks, FaTrain } from "react-icons/fa";
+import { AiOutlineSchedule } from "react-icons/ai";
 
 export class NavigateBar extends Component {
   render() {
     return (
-    <>
-      <div>
+
         <div  className='background'>
-       
-        <ul>  
           <header>
           <h3>Train Route Management</h3><br/>
+         
           </header>
-          <nav  className='align'>    
-
-          <li><a href="/routes"><b>Route Details</b></a></li><br/><br/>
-          <li><a href="/trains"><b>Train Details</b></a></li><br/><br/>
+          <nav  >    
+      <div>
+         <a href="/routes"><button className='button-update'><FaRoad/>           Route Details</button></a></div>
+         <div> <a href="/trains"><button className='button-update'><FaTrain/>  Train Details</button></a></div>
         
-          <li><a href="/station"><b>Station Management</b></a></li><br/><br/>
-          <li><a href="/timeschedule"><b>Train Schedule</b></a></li><br/><br/>
+         <a href="/station"><button className='button-update'><FaTasks/>      Station Management</button></a>
+          <a href="/timeschedule"><button className='button-update'><AiOutlineSchedule />  Train Schedule</button></a>
           </nav>
-        
-        </ul>
+          <body>
+          {/* ind 1x1 -mindepth 2 -type f -exec mv -iy '{}' svgs/ ';' rm -rf react mkdir 
+          react npx @svgr/cli --template template.js -d react svgs/ printf "import React 
+          from 'react';"  react/0000import.js cat react/*  paths.ts rm react/0000import.js
+           printf "import React from 'react';\nimport * as paths from './paths';\n\nexport
+            class SvgWrapper : (any) React.FC = (Element) (props : React.SVGProps) 
+           ;\n\n"  tmp000.js ls react/ | xargs -n 1 basename |s
+           tmp001.js cat tmp*.js  index.ts rm tmp001.js rm tmp000.js */}
+          </body>
+          <footer>
+              dffhdfhdfh
+          </footer>
        
         </div>
-      </div>
-      </>  
+
+   
     )
   }
 }

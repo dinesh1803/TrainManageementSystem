@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
 import './border.css'
 
@@ -37,16 +38,17 @@ const TrainRoutes = () => {
 
     return (
 
-        <div><br />
+        <div>
+            <h1> Train Route Details </h1><br />
              <Link to='/nav'>
-                <button className='button-update '>Back to Home page</button>
+             <button className='button-del '><ImExit/> Home</button>
             </Link>
-           <nav >
-                <u id="nav">
+        
+                <u className='add'>
                     <li><NavLink to="/addroutes"><button className='button-update '>Add More Routes</button></NavLink></li>
 
                 </u>
-            </nav> 
+       
 
             <table id="customers">
                 <thead>

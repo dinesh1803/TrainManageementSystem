@@ -1,6 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
+import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
 
 const Stations = () => {
@@ -51,17 +52,17 @@ const Stations = () => {
     }
 
     return (
-        <div><br/>
+        <div>
+            <h1 >Station Details</h1><br/>
          <Link to='/nav'>
-                <button className='button-update '>‹‹‹ back to Home page</button>
+         <button className='button-del '><ImExit/> Home</button>
             </Link>
-            <h1>station</h1>
-            <nav>
-                <u id="nav">
+            
+          
+            <u className='add'>
                     <NavLink to="/addstation"><button className='button-update '>Add More Station</button></NavLink>
-
                 </u>
-            </nav>
+
             <div className='SearchBar'>
                 <label htmlFor='text'>Search...</label><br></br>
                 <input  className='SearchInput'  type='search' name='searchTrain' placeholder="searchByTrain" value={searchStation} onInput={(e) => searchHandler(e)} ></input>

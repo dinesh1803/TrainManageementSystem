@@ -85,11 +85,13 @@ const PostRouteDetails = () => {
             <div className='forms' >
                 <form onSubmit={submitHandler}>
                     <h3>Add Route Details</h3>
-                    <div >
+                    <div>
                         <label htmlFor='text'>TrainName</label><br></br>
-                        <select name='trainDetails' id='id' onChange={changeHandler}>
-                            <option selected value={''} >select Train Name</option>
-                            {_.map(addTrain, train => <option key={train.id} value={train.id}>{train.trainName}</option>)}
+                        <select   name='trainDetails' id='id' onChange={changeHandler}>
+                    
+                            <option  className='dropdown-cont' selected value={''} >select Train Name</option>
+                            {_.map(addTrain, train => <option  key={train.id} value={train.id}>{train.trainName}</option>)}
+                          
                         </select>
                     </div><br />
                     <div >
@@ -102,7 +104,7 @@ const PostRouteDetails = () => {
                     </div><br />
                     <div >
                         <label htmlFor='text'>Arraival Time</label><br></br>
-                        <input type={"text"} placeholder="HH:mm:ss" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br></br><br></br>
+                        <input type={"time"} placeholder="HH:mm:ss" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br></br><br></br>
                     </div>
                     <div>
                         <button className='button-update ' type='submit'>-Add-</button><br></br><br />
