@@ -70,7 +70,7 @@ const PostRouteDetails = () => {
         axios.post("http://localhost:8080/admin/route-details/post", postRouteDetails)
             .then(
                 () => {
-                    navigate('/timeschedule')
+                    navigate('/timeschedule' )
                 }
             ).catch(
                 error => {

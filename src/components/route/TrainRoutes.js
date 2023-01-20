@@ -1,8 +1,11 @@
+import { Button } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
 import './border.css'
+import DeleteIcon from '@mui/icons-material/Delete';
+import HomeIcon from '@mui/icons-material/Home';
 
 
 const TrainRoutes = () => {
@@ -40,15 +43,14 @@ const TrainRoutes = () => {
 
         <div>
             <h1 className='h1'> Train Route Details </h1><br />
-             <Link to='/nav'>
-             <button className='button-del '><ImExit/> Home</button>
-            </Link>
-        
-                <u className='add'>
-                    <li><NavLink to="/addroutes"><button className='button-update '>Add More Routes</button></NavLink></li>
-
-                </u>
-       
+            <div style={{display: 'flex',justifyContent:'space-between', margin:'0 2rem .5rem 2rem'}}>
+             <NavLink style={{textDecoration: 'none'}} to='/nav'>
+                <Button variant="contained" color='success' onClick={() => { <Link to='/nav'></Link> }} startIcon={<HomeIcon />}>
+                    <span style={{paddingTop:'3px'}}>Home</span>
+                </Button>
+            </NavLink>
+                    <NavLink to="/addroutes"><button className='button-update '>Add More Routes</button></NavLink>
+                </div>
 
             <table id="customers">
                 <thead>

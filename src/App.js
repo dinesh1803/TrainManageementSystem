@@ -14,8 +14,9 @@ import Stations from './components/station/Stations';
 import PostStationDetails from './components/station/PostStationDetails';
 import GetrouteDetails from './components/routedetails/GetrouteDetails';
 import PostRouteDetails from './components/routedetails/PostRouteDetails';
-import Search from './components/User Component/Search';
+import ResultSearch from './components/User Component/ResultSearch';
 import SearchTrain from './components/User Component/SearchTrain';
+import SearchBox from './components/User Component/SearchBox';
 
 
 
@@ -48,8 +49,9 @@ import SearchTrain from './components/User Component/SearchTrain';
           <Route path='/timeschedule' element={<GetrouteDetails/>} ></Route>
           <Route path='/addroutedetails' element={<PostRouteDetails/>} ></Route>
     
-          <Route path='/search' element={<Search/>} ></Route>
+          <Route path='/search' element={<ResultSearch/>} ></Route>
           <Route path='/searchTrain' element={<SearchTrain/>} ></Route>
+          <Route path='/usersearch' element={<SearchBox/>} ></Route>
         </Routes>
     
     </div>

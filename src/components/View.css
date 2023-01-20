@@ -65,7 +65,7 @@ input {
   border: none;
   /* box-shadow: 0 0.7em 1.5em -0.5em #14a73e98; */
   letter-spacing: 0.05em;
-  border-radius: 20em;
+  border-radius: 5em;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -91,7 +91,7 @@ input {
   border: none;
   /* box-shadow: 0 0.7em 1.5em -0.5em #14a73e98; */
   letter-spacing: 0.05em;
-  border-radius: 20em;
+  border-radius: 5em;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;

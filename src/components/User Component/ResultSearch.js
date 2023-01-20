@@ -1,9 +1,9 @@
 import axios from 'axios';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Search =()=>{
+const ResultSearch =()=>{
     const [routeDetails, setRouteDetails] = useState([])
   
 
@@ -20,6 +20,7 @@ const Search =()=>{
                 response => {
                     console.log(response.data)
                
+                    
                     setRouteDetails(response.data)
                 }
             ).catch(
@@ -77,4 +78,4 @@ const Search =()=>{
     ) 
 }
 
-export default Search
+export default ResultSearch
