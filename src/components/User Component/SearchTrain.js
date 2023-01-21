@@ -2,7 +2,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const SearchTrain = () => {
 
@@ -40,29 +40,19 @@ const SearchTrain = () => {
         console.log(error)
       })
   }
-
-
-
-
-
-
-
   return (
 
     <div>
-
-
-
       <table id="customers">
         <thead>
           <tr>
             <th>S.No</th>
-            <th>Train Id</th>
+            <th>Route Name</th>
             <th>Train Number</th>
             <th>Train Name</th>
-            <th>FROM</th>
+            <th>FROM Station</th>
             <th>Destination</th>
-
+            <th>View Schedule</th>
           </tr>
         </thead>
 

@@ -1,16 +1,19 @@
 import axios from 'axios'
 import _ from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { FaLocationArrow, FaMapMarkerAlt} from "react-icons/fa";
 
 const SearchBox = () => {
+   const navigate = useNavigate()
+
     const [trainSchedule, setTrainSchedule] = useState({
         source: "",
         destination: ""
     })
 
     const [route, setroute] = useState([])
-
+   
 
     useEffect(() => {
         axios.get('http://localhost:8080/admin/route/get').then(res => {
@@ -19,35 +22,40 @@ const SearchBox = () => {
     }, [])
 
     const changeHandler = (e) => {
-       
+
         console.log(e.target.value)
         setTrainSchedule(prev => ({ ...prev, [e.target.name]: e.target.value }))
         console.log(trainSchedule.source)
     }
 
-   const submitHandler = ()=>{
+    const submitHandler = () => {
 
-   }
+        navigate("/searchTrain", { state: { route: trainSchedule } })
+    }
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
+        <div className='search-background' >
 
-                <div>
-                    <label>Source</label>
-                    <select name='source' id='id' onInput={changeHandler}>
-                        <option selected value={''}>select Station Name</option>
+
+            <form className='search-container' onSubmit={submitHandler}>
+                <p className='search-type'>Search By Station</p>
+                <div className='search-station'>
+                    <label className='lab'> <FaLocationArrow/>  From..</label><br/>
+                    <select className='in' name='source' id='id' onInput={changeHandler} required>
+                        <option selected value={''}>Enter Station</option>
                         {_.map(route, stations => <option name='source' value={stations.source} >{stations.source}</option>)}
                     </select>
-                </div>
-                <label>Destination</label>
-                <select name='destination' id='id' onChange={changeHandler}>
-                    <option selected value={''}>select Station Name</option>
-                    {_.map(route, stations => <option  value={stations.destination} >{stations.destination}</option>)}
+                </div > <br/>
+                <div className='search-station'> 
+                <label className='lab'><FaMapMarkerAlt/> To..</label><br />
+                <select className='in' name='destination' id='id' onChange={changeHandler} required>
+                    <option selected value={''}>Enter Station</option>
+                    {_.map(route, stations => <option value={stations.destination} >{stations.destination}</option>)}
                 </select>
-
-                <Link to={'/searchTrain'} state={{ route: trainSchedule }}><button type='submit' >Search</button></Link>
-
+                </div><br/>
+                <div >
+               <button className='find-train-btn' type='submit' >Search</button>
+                </div>
             </form>
         </div>
     )

@@ -39,7 +39,7 @@ footer{
   align-items: center;
  text-align: center;
  justify-content: center;
- background-color: rgb(165, 165, 218);
+ background-color: rgb(56, 56, 223);
  display: flex;
 }
 .home-h1{
@@ -57,7 +57,7 @@ footer{
   padding: 0.7em 1.4em 0.7em 1.1em;
   color: white;
 
-  background-color:rgb(94, 94, 196);
+  background-color:rgb(49, 49, 197);
   border: none;
   /* box-shadow: 0 0.7em 1.5em -0.5em #14a73e98; */
   letter-spacing: 0.05em;
@@ -69,5 +69,5 @@ footer{
 }
 .button-home:hover {
   box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
-  background:rgb(7, 7, 184);
+  background:rgb(4, 4, 243);
 }
