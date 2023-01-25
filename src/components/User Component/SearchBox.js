@@ -36,20 +36,20 @@ const SearchBox = () => {
     return (
         <div className='search-background' >
 
-
+    
             <form className='search-container' onSubmit={submitHandler}>
                 <p className='search-type'>Search By Station</p>
                 <div className='search-station'>
                     <label className='lab'> <FaLocationArrow/>  From..</label><br/>
                     <select className='in' name='source' id='id' onInput={changeHandler} required>
-                        <option selected value={''}>Enter Station</option>
+                        <option selected value={''}>Select Station</option>
                         {_.map(route, stations => <option name='source' value={stations.source} >{stations.source}</option>)}
                     </select>
                 </div > <br/>
                 <div className='search-station'> 
                 <label className='lab'><FaMapMarkerAlt/> To..</label><br />
                 <select className='in' name='destination' id='id' onChange={changeHandler} required>
-                    <option selected value={''}>Enter Station</option>
+                    <option selected value={''}>Select Station</option>
                     {_.map(route, stations => <option value={stations.destination} >{stations.destination}</option>)}
                 </select>
                 </div><br/>

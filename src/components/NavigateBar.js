@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Home.css'
+import '../css/Home.css'
 import { FaRoad, FaSearchPlus, FaTasks, FaTrain } from "react-icons/fa";
 import { AiOutlineSchedule } from "react-icons/ai";
 
@@ -28,7 +28,7 @@ export class NavigateBar extends Component {
    </div>
           </body>
           <footer>
-           ... ... ... ... ...
+          since 2022
           </footer>
        
         </div>

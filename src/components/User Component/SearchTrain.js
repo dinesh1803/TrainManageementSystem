@@ -29,7 +29,7 @@ const SearchTrain = () => {
 
   const getRoutes = (source,destination) => {
     console.log(source)
-    console.log("dest")
+    console.log(destination)
     axios.get(`http://localhost:8080/admin/traindetails/getBySourceAndDest?source=${source}&destination=${destination}`)
       .then(response => {
         console.log(response.data)

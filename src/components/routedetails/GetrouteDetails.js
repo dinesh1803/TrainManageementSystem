@@ -28,15 +28,15 @@ const GetrouteDetails = () => {
                 }
             )
     }
-    const deleteRouteHandler = (id) => {
-        axios.delete(`http://localhost:8080/admin/route-details/delete/${id}`)
-            .then(response => {
-                console.log(response)
-                setRouteDetails(response.data)
-            }).catch(error => {
-                console.log(error)
-            })
-    }
+    // const deleteRouteHandler = (id) => {
+    //     axios.delete(`http://localhost:8080/admin/route-details/delete/${id}`)
+    //         .then(response => {
+    //             console.log(response)
+    //             setRouteDetails(response.data)
+    //         }).catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
 
     const searchHandler = (e) => {
@@ -81,10 +81,10 @@ const GetrouteDetails = () => {
                         <th>RouteName</th>
                         <th>Train Name</th>
                         <th>Station Name</th>
-                        <th>Train Id</th>
+                     
                         <th>Time</th>
-                        <th>Delete</th>
-                        <th>update</th>
+                        <th>Halt</th>
+                   
                     </tr>
                 </thead>
 
@@ -98,13 +98,11 @@ const GetrouteDetails = () => {
                                 <td>{routedetail?.train.trainName}</td>
 
                                 <td>{routedetail.station?.stationName}</td>
-                                <td>{routedetail.train?.id}</td>
+                             
                                 <td>{routedetail?.scheduleTime}</td>
+                                <td>{routedetail?.haltTime}</td>
 
-                                <td>
-                                    <button className="button-del" onClick={() => deleteRouteHandler(routedetail.id)}>Delete</button></td>
-                                 <td> <Link  to={'/addroutedetails'} state={{routedetail:routedetail}}><button className='button-update ' >Update</button></Link>  
-                                </td>
+                               
 
                             </tr>
                         )

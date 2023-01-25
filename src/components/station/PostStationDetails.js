@@ -6,6 +6,7 @@ const PostStationDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const [stations, setStations] = useState({
+        stationCode:'',
         stationName: ''
     })
 
@@ -37,12 +38,17 @@ const PostStationDetails = () => {
             <div className='forms' >
                 <form>
                     <h3>Add Stations</h3><br/><br/>
-                    <div className='' >
+                    <div >
+                        <label htmlFor='text'>Enter Station code</label><br/><br/>
+                        <input  type={'text'} placeholder="station name.." name='stationCode' value={stations.stationCode} onChange={changeHandler} required ></input><br></br><br></br>
+                    </div>
+                    <div >
                         <label htmlFor='text'>Enter Station Name</label><br/><br/>
                         <input  type={'text'} placeholder="station name.." name='stationName' value={stations.stationName} onChange={changeHandler} required ></input><br></br><br></br>
                     </div>
+                    
                     <div>
-                        <button className='button-update ' onClick={clickHandler}>-Add-</button><br/><br/>
+                        <button className='button-update ' onClick={clickHandler}>{stations.id ? "Update" : "Save"}</button><br/><br/>
                     </div>
                     <div>
                         <Link to={"/station"}><button className='button-update ' > Back</button></Link>

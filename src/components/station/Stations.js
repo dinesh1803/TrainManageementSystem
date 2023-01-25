@@ -83,7 +83,7 @@ const Stations = () => {
                         station.map((station, index) =>
                             <tr key={station.id}>
                                 <td>{index + 1}</td>
-                                <td>{station.id}</td>
+                                <td>{station?.stationCode}</td>
                                 <td>{station.stationName}</td>
                                 <td> <button class="button-del" onClick={() => deleteRouteHandler(station.id)}>Delete</button></td>
                                 <td> <Link to={'/addstation'} state={{ station: station }} > <button className='button-update ' >Update</button></Link> </td>

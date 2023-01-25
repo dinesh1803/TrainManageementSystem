@@ -1,41 +1,66 @@
 import axios from 'axios'
+
+import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import ComboBox from './Dropdown';
 
 
 const PostRoutes = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [fromStation,setFromStation]=useState([]);
 
     const [routes, setRoutes] = useState({
-        routeName:'',
+        routeName: '',
         source: '',
         destination: ''
     })
 
+    const[station,setStation]=useState([])
+
+    //update
     useEffect(() => {
         if (location.state?.route) {
             setRoutes(location.state.route)
         }
-
     }, [])
 
+    //dropdown
+    useEffect(()=>{
+   axios.get(`http://localhost:8080/admin/station/get`)
+        .then(
+            response => {
+                console.log(response.data)
+                setStation(_.orderBy(response.data,"id"))
+                // let fromStation=[]
+                // const stationName=_.map(response.data,c=>{
+                //     let name={};
+                //     name.label=c.stationName;
+                //     name.id=c.id
+                //     fromStation.push(name)
+                // })
+                // setFromStation(fromStation);
+    })
+},[])
 
     const changeHandler = (e) => {
         setRoutes(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
+
     const submitHandler = (e) => {
         e.preventDefault()
         axios.post('http://localhost:8080/admin/route/post', routes)
 
             .then(response => {
                 navigate('/routes')
+                console.log(response.data);
             }).catch(error => {
                 console.log(error)
+                toast.error("From and To station can not be same");
             })
-
     }
-
 
 
 
@@ -44,19 +69,31 @@ const PostRoutes = () => {
             <div className='forms' >
                 <form onSubmit={submitHandler}>
                     <h3>Add more Routes</h3>
+                    {/* <div>
+                   {<ComboBox data={fromStation} />}
+                    </div> */}
                     <div>
-
-                        < label htmlFor='text'> Source </label><br />
-                        <input type="text" name="source" value={routes.source} onChange={changeHandler} required /><br /><br />
-                    </div>
-                    <div>
-                    < label htmlFor='text'> Route Name </label><br />
+                        < label htmlFor='text'> Route Name </label><br />
+    
                         <input type="text" name="routeName" value={routes.routeName} onChange={changeHandler} required /><br /><br />
                     </div>
                     <div>
-                        <label htmlFor='text'>Destination </label><br />
-                        <input type="text" name="destination" value={routes.destination} onChange={changeHandler} required /><br /><br />
+                        < label htmlFor='text'> From </label><br />
+                        {/* <input type="text" name="source" value={routes.source} onChange={changeHandler} required /><br /><br /> */}
+                        <select name='source' id='id' onChange={changeHandler}  >
+                      
+                      <option selected value={''}>select Station Name</option>
+                      {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
+                  </select>
                     </div>
+
+                    <div>
+                        <label htmlFor='text'>To </label><br />
+                        <select name='destination' id='id' onChange={changeHandler} >
+                      <option selected value={''}>select Station Name</option>
+                      {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
+                  </select>
+                  </div>
                     <div>
                         <button className='button-update ' type="submit" >{routes.id ? "Update" : "Save"}</button><br />
                     </div><br />

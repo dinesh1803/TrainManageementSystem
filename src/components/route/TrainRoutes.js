@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
-import './border.css'
+import '../../css/border.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HomeIcon from '@mui/icons-material/Home';
 
@@ -11,8 +11,6 @@ import HomeIcon from '@mui/icons-material/Home';
 const TrainRoutes = () => {
 
     const [routes, setRoutes] = useState([])
-    const [show, setShow] = useState(true)
-
 
     useEffect(() => {
         getRoutes();
@@ -42,15 +40,15 @@ const TrainRoutes = () => {
     return (
 
         <div>
-            <h1 className='h1'> Train Route Details </h1><br />
-            <div style={{display: 'flex',justifyContent:'space-between', margin:'0 2rem .5rem 2rem'}}>
-             <NavLink style={{textDecoration: 'none'}} to='/nav'>
-                <Button variant="contained" color='success' onClick={() => { <Link to='/nav'></Link> }} startIcon={<HomeIcon />}>
-                    <span style={{paddingTop:'3px'}}>Home</span>
-                </Button>
-            </NavLink>
-                    <NavLink to="/addroutes"><button className='button-update '>Add More Routes</button></NavLink>
-                </div>
+            <h1 className='h1'> Route Details </h1><br />
+            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 2rem .5rem 2rem' }}>
+                <NavLink style={{ textDecoration: 'none' }} to='/nav'>
+                    <Button variant="contained" color='success' onClick={() => { <Link to='/nav'></Link> }} startIcon={<HomeIcon />}>
+                        <span style={{ paddingTop: '3px' }}>Home</span>
+                    </Button>
+                </NavLink>
+                <NavLink to="/addroutes"><button className='button-update '>Add More Routes</button></NavLink>
+            </div>
 
             <table id="customers">
                 <thead>
@@ -58,7 +56,7 @@ const TrainRoutes = () => {
                         <th>S.No</th>
                         <th>Route Id</th>
                         <th>Route Name</th>
-                        <th>SOURCE</th>
+                        <th>From Station</th>
                         <th>DESTINATION</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -75,8 +73,8 @@ const TrainRoutes = () => {
                                 <td> {route.source}</td>
                                 <td> {route.destination}</td>
                                 <td  >
-                                    <button  className="button-del" onClick={() => deleteRouteHandler(route.routeId)}>Delete</button> </td>
-                                    <td  >   <Link to={'/addroutes'} state={{ route: route }}><button className='button-update ' >Update</button></Link>
+                                    <button className="button-del" onClick={() => deleteRouteHandler(route.routeId)}>Delete</button> </td>
+                                <td  >   <Link to={'/addroutes'} state={{ route: route }}><button className='button-update ' >Update</button></Link>
                                 </td>
                             </tr>
 
@@ -86,7 +84,7 @@ const TrainRoutes = () => {
 
                 </tbody>
             </table><br />
-           
+
         </div>
     )
 }

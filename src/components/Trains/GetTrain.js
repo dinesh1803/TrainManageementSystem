@@ -64,8 +64,8 @@ const GetTrain = () => {
             <th>Train Number</th>
             <th>Train Name</th>
             <th>Route Name</th>
-            <th>Delete</th>
-            <th>Update</th>
+
+            <th style={{width:'25rem'}}>Action</th>
           </tr>
         </thead>
 
@@ -78,9 +78,9 @@ const GetTrain = () => {
                 <td> {train.trainNumber} </td>
                 <td> {train.trainName} </td>
                 <td> {train.route?.routeName} </td>
-
-                <td><button class="button-del" onClick={() => deleteRouteHandler(train.id)}>Delete</button></td>
-                <td> <Link to={'/addtrains'} state={{ train: train }} ><button className='button-update '>Update</button></Link> </td>
+                <td style={{width:'25rem',display:'flex', justifyContent:'space-around'}}><Link to={'/makeschedule'} state={{ train: train.trainName }} ><button >Make Schedule</button></Link>
+                  <button class="button-del" onClick={() => deleteRouteHandler(train.id)}>Delete</button>
+                  <Link to={'/addtrains'} state={{ train: train }} ><button className='button-update '>Update</button></Link> </td>
               </tr>
             )
           }

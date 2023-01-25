@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './View.css'
+import '../css/View.css'
 import React, { Component } from 'react'
 
 export class Register extends Component {

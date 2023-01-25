@@ -43,10 +43,10 @@ const PostTrain = () => {
   const submitHandler = (e) => {
     e.preventDefault()
 
-    if (!trainDetails.routeIds) return
+    if (!trainDetails.route) return
 
-    if (trainDetails.routeIds) {
-      const route = { routeId: trainDetails.routeIds }
+    if (trainDetails.route ) {
+      const route = { routeId: trainDetails.route }
       trainDetails.route = route;
     }
 
@@ -81,8 +81,8 @@ const PostTrain = () => {
 
           <div>
             <label htmlFor='text'>Select route Name</label><br />
-            <select name='routeIds' id='routeId' onChange={changeHandler} >
-              <option selected value={""}>Select route Id</option>
+            <select name='route' onChange={changeHandler} value={trainDetails.route?.routeId} >
+              <option selected value={""}>Select route Name</option>
               {_.map(addRoute, r => <option key={r.routeId} value={r.routeId}>{r.routeName}</option>)}
             </select>
           </div><br />

@@ -2,13 +2,14 @@ import axios from 'axios';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const PostRouteDetails = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
     const [postRouteDetails, setPostRouteDetails] = useState({
-        // scheduleTime: ''
+        
     })
     const [addTrain, setAddTrain] = useState([])
 
@@ -37,11 +38,21 @@ const PostRouteDetails = () => {
 
     //for update
     useEffect(()=>{
+     
         if(location.state?.routedetail){
-            setPostRouteDetails(location.state.routedetail)
+            setPostRouteDetails(location.state?.routedetail)
         }
 
     },[])
+    
+
+    //for Train id
+    // useEffect(()=>{
+    //     if(location.state?.addMoreStations){
+    //         console.log(location.state?.addMoreStations.train.id)
+    //         setPostRouteDetails(location.state?.addMoreStations.train.id)
+    //     }
+    // },[])
 
 
     const changeHandler = (e) => {
@@ -50,27 +61,26 @@ const PostRouteDetails = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
-        if (!postRouteDetails.trainDetails) return
-
-        if (postRouteDetails.trainDetails) {
-            const train = { id: postRouteDetails.trainDetails }
+//console.log(postRouteDetails, "postRouteDetails");
+        // if (!postRouteDetails.train) return
+        if(typeof(postRouteDetails.train)=== 'string'){
+            const train = { id: postRouteDetails.train }
             postRouteDetails.train = train
         }
 
 
-        if (!postRouteDetails.stationDetails) return
+        // if (!postRouteDetails.station) return
 
-        if (postRouteDetails.stationDetails) {
+        if (typeof(postRouteDetails.station) === 'string') {
             const station = { 
-                id:postRouteDetails.stationDetails }
+                id:postRouteDetails.station }
             postRouteDetails.station = station
         }
-
+        console.log(postRouteDetails, "here");
         axios.post("http://localhost:8080/admin/route-details/post", postRouteDetails)
             .then(
                 () => {
-                    navigate('/timeschedule' )
+                    navigate('/makeSchedule' )
                 }
             ).catch(
                 error => {
@@ -83,20 +93,20 @@ const PostRouteDetails = () => {
     return (
         <div className='stylefrom'>
             <div className='forms' >
-                <form onSubmit={submitHandler}>
+                <form onSubmit={(e) => submitHandler(e)}>
                     <h3>Add Route Details</h3>
                     <div>
                         <label htmlFor='text'>TrainName</label><br></br>
-                        <select   name='trainDetails' id='id' onChange={changeHandler}>
-                    
-                            <option  className='dropdown-cont' selected value={''} >select Train Name</option>
-                            {_.map(addTrain, train => <option  key={train.id} value={train.id}>{train.trainName}</option>)}
-                          
+                        <select name='train' id='id' onChange={changeHandler} value={postRouteDetails.train?.id } >
+                        <option  className='dropdown-cont' selected value={''} >select Train Name</option>
+                            {_.map(addTrain, train => <option  key ={train.id} value={train.id}>{train.trainName}</option>)}
                         </select>
+        
+
                     </div><br />
                     <div >
                         <label htmlFor='text'>Station Id</label><br></br>
-                        <select name='stationDetails' id='id' onChange={changeHandler}>
+                        <select name='station' id='id' onChange={changeHandler} value={postRouteDetails.station?.id}>
                       
                             <option selected value={''}>select Station Name</option>
                             {_.map(station, stations => <option key={stations.id} value={stations.id} >{stations.stationName}<br /></option>)}
@@ -104,14 +114,18 @@ const PostRouteDetails = () => {
                     </div><br />
                     <div >
                         <label htmlFor='text'>Arraival Time</label><br></br>
-                        <input type={"time"} placeholder="HH:mm:ss" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br></br><br></br>
+                        <input type={"time"} placeholder="HH:mm" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br/><br/>
+                    </div>
+                    <div >
+                        <label htmlFor='text'>Halt Time</label><br></br>
+                        <input type={"text"} placeholder="halt time" name='haltTime' value={postRouteDetails.haltTime} onChange={changeHandler} required ></input><br/><br/>
                     </div>
                     <div>
-                        <button className='button-update ' type='submit'>-Add-</button><br></br><br />
+                        <button className='button-update ' type='submit'>{postRouteDetails.id ? "Update" : "Save"}</button><br></br><br />
                     </div>
-                    <div>
-                        <Link to={"/timeschedule"}> <button className='button-update '>Back</button></Link>
-                    </div>
+                    {/* <div>
+                        <Link to={"/makeschedule"} state={{trainName:location.state?.addMoreStations.train.trainName}}> <button className='button-update '>Back</button></Link>
+                    </div> */}
                 </form>
             </div>
         </div>

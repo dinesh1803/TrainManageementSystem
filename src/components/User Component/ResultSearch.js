@@ -45,8 +45,9 @@ const ResultSearch =()=>{
                    
                         <th>Train Name</th>
                         <th>Station Name</th>
-                        <th>Train Id</th>
+                      
                         <th>Time</th>
+                        <th>Halt</th>
                        
                     </tr>
                 </thead>
@@ -61,11 +62,9 @@ const ResultSearch =()=>{
                                 <td>{routedetail?.train.trainName}</td>
 
                                 <td>{routedetail.station?.stationName}</td>
-                                <td>{routedetail.train?.id}</td>
+                        
                                 <td>{routedetail?.scheduleTime}</td>
-
-                                
-
+                                <td>{routedetail?.haltTime}</td>
                             </tr>
                         )
                     }

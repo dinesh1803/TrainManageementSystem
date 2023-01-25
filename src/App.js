@@ -13,10 +13,14 @@ import PostTrain from './components/Trains/PostTrain';
 import Stations from './components/station/Stations';
 import PostStationDetails from './components/station/PostStationDetails';
 import GetrouteDetails from './components/routedetails/GetrouteDetails';
-import PostRouteDetails from './components/routedetails/PostRouteDetails';
+
 import ResultSearch from './components/User Component/ResultSearch';
 import SearchTrain from './components/User Component/SearchTrain';
 import SearchBox from './components/User Component/SearchBox';
+import MakeTrainSchedule from './components/Trains/MakeTrainSchedule';
+import PostRouteDetails from './components/Trains/PostRouteDetails';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -40,6 +44,7 @@ import SearchBox from './components/User Component/SearchBox';
           by train
           <Route path='/trains' element={<GetTrain/>} ></Route>
           <Route path='/addtrains' element={<PostTrain />} ></Route>
+          <Route path='/makeschedule' element={<MakeTrainSchedule />} ></Route>
           {/* <Route path='/addtrains/:id' element={<PostTrain />} ></Route> */}
 
           by station
@@ -49,12 +54,14 @@ import SearchBox from './components/User Component/SearchBox';
           <Route path='/timeschedule' element={<GetrouteDetails/>} ></Route>
           <Route path='/addroutedetails' element={<PostRouteDetails/>} ></Route>
     
+        by user
           <Route path='/search' element={<ResultSearch/>} ></Route>
           <Route path='/searchTrain' element={<SearchTrain/>} ></Route>
           <Route path='/usersearch' element={<SearchBox/>} ></Route>
         </Routes>
     
     </div>
+    <ToastContainer />
     </>
   )}
 }

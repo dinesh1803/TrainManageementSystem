@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import './View.css'
+import '../css/View.css'
 
 import React from 'react'
 
