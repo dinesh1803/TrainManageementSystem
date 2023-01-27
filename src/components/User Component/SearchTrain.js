@@ -21,10 +21,18 @@ const SearchTrain = () => {
 
 
   useEffect(() => {
-    console.log(location.state.route)
-    const source=location.state.route.source
-    const destination=location.state.route.destination
+    if(location.state?.route){
+    console.log(location.state?.route)
+    const source=location.state.route?.source
+    const destination=location.state.route?.destination
     getRoutes(source,destination);
+    }
+    else if(location.state?.resultSearch){
+      console.log(location.state?.resultSearch.route.source+"varutha");
+       const source=location.state?.resultSearch.route?.source
+       const destination=location.state?.resultSearch.route?.destination
+       getRoutes(source,destination)
+    }
   }, [])
 
   const getRoutes = (source,destination) => {
@@ -67,15 +75,15 @@ const SearchTrain = () => {
                 <td> {train.trainName} </td>
                 <td> {train.route?.source} </td>
                 <td>{train.route?.destination}</td>
-                <td><Link to={'/search'} state={{ train: train.trainName }}><button>Train Schedule</button></Link></td>
+                <td><Link to={'/search'} state={{ train: train}}><button>Train Schedule</button></Link></td>
               </tr>
             )
           }
 
         </tbody>
       </table><br />
-      <Link to='/nav'>
-        <button >back to Home page</button><br /><br />
+      <Link to='/usersearch'>
+        <button >Hit back to search</button><br /><br />
       </Link>
     </div>
   )

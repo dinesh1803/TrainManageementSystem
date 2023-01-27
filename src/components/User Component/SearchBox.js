@@ -46,6 +46,7 @@ const SearchBox = () => {
                         {_.map(route, stations => <option name='source' value={stations.source} >{stations.source}</option>)}
                     </select>
                 </div > <br/>
+                
                 <div className='search-station'> 
                 <label className='lab'><FaMapMarkerAlt/> To..</label><br />
                 <select className='in' name='destination' id='id' onChange={changeHandler} required>

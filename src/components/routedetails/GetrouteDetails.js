@@ -94,8 +94,8 @@ const GetrouteDetails = () => {
                             <tr key={routedetail.id}>
 
                                 <td>{index + 1}</td>
-                                <td>{routedetail?.train.route.routeName}</td>
-                                <td>{routedetail?.train.trainName}</td>
+                                <td>{routedetail?.train?.route?.routeName}</td>
+                                <td>{routedetail?.train?.trainName}</td>
 
                                 <td>{routedetail.station?.stationName}</td>
                              

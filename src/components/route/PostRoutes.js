@@ -4,13 +4,12 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ComboBox from './Dropdown';
 
 
 const PostRoutes = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [fromStation,setFromStation]=useState([]);
+
 
     const [routes, setRoutes] = useState({
         routeName: '',
@@ -79,12 +78,18 @@ const PostRoutes = () => {
                     </div>
                     <div>
                         < label htmlFor='text'> From </label><br />
-                        {/* <input type="text" name="source" value={routes.source} onChange={changeHandler} required /><br /><br /> */}
-                        <select name='source' id='id' onChange={changeHandler}  >
                       
+                        {/* <select name='source' id='id' onChange={changeHandler}  >                     
                       <option selected value={''}>select Station Name</option>
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
-                  </select>
+                  </select> */}
+
+                    <input list='data' name='source' placeholder='search from station' onChange={changeHandler} ></input>
+                    <datalist id='data' >
+                    <option selected value={''}>select Station Name</option>
+                      {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}</option>)}
+                    </datalist>
+
                     </div>
 
                     <div>

@@ -78,7 +78,7 @@ const GetTrain = () => {
                 <td> {train.trainNumber} </td>
                 <td> {train.trainName} </td>
                 <td> {train.route?.routeName} </td>
-                <td style={{width:'25rem',display:'flex', justifyContent:'space-around'}}><Link to={'/makeschedule'} state={{ train: train.trainName }} ><button >Make Schedule</button></Link>
+                <td style={{width:'25rem',display:'flex', justifyContent:'space-around'}}><Link to={'/makeschedule'} state={{ train: train }} ><button >Make Schedule</button></Link>
                   <button class="button-del" onClick={() => deleteRouteHandler(train.id)}>Delete</button>
                   <Link to={'/addtrains'} state={{ train: train }} ><button className='button-update '>Update</button></Link> </td>
               </tr>

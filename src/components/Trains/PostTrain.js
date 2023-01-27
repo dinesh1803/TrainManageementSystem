@@ -43,9 +43,9 @@ const PostTrain = () => {
   const submitHandler = (e) => {
     e.preventDefault()
 
-    if (!trainDetails.route) return
+    // if (!trainDetails.route) return
 
-    if (trainDetails.route ) {
+    if (typeof(trainDetails.route)==='string' ) {
       const route = { routeId: trainDetails.route }
       trainDetails.route = route;
     }

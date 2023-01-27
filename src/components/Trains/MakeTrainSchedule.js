@@ -8,18 +8,25 @@ import { ImExit } from 'react-icons/im';
 const MakeTrainSchedule = () => {
 
     const [routeDetails, setRouteDetails] = useState([])
+    const[train ,setTrain]=useState({
+
+    })
+    const[trainName,setTrainName]=useState({})
 
     const navigate=useNavigate()
     const location = useLocation()
 
     useEffect(() => {
         if(location.state?.train){
-        const value = location.state?.train
+            setTrain(location.state?.train)
+        const value = location.state?.train.id
+        setTrainName(value);
         getRouteDetails(value);
         }else if(location.state?.trainName){
             const value = location.state?.trainName
+            setTrainName(value);
             getRouteDetails(value);
-        }
+        }   
     }, [])
 
     const getRouteDetails = (value) => {
@@ -40,15 +47,10 @@ const MakeTrainSchedule = () => {
 
     const deleteRouteHandler = (id) => {
         axios.delete(`http://localhost:8080/admin/route-details/delete/${id}`)
-            .then(response => {
-                console.log(response)
-                
-           navigate('/makeschedule')
-            }).catch(error => {
-                console.log(error)
+            .then(res=>{
+                getRouteDetails(trainName)
             })
-    }
-
+        }
 
 
 
@@ -60,8 +62,8 @@ const MakeTrainSchedule = () => {
                     <button className='button-del '><ImExit /> Back</button>
                 </Link>
                 <u className='add'>
-                    <Link to="/addroutedetails" state={{ addMoreStations: routeDetails[routeDetails.length - 1] }}><button className='button-update '> Add More Station</button></Link>
-
+                    <Link to="/addroutedetails" state={{train:trainName}}><button className='button-update '> Add More Station</button></Link>
+                    {/* <Link to="/addroutedetails" state={{train:routeDetails[routeDetails.length-1]}}><button className='button-update '> Add More Station</button></Link>  */}
                 </u></div>
 
 
@@ -76,6 +78,8 @@ const MakeTrainSchedule = () => {
 
                         <th>Time</th>
                         <th>Halt</th>
+                        <th>PF.NO</th>
+                        <th>KMS</th>
                         <th>Action</th>
 
                     </tr>
@@ -83,7 +87,7 @@ const MakeTrainSchedule = () => {
                 <tbody>
                     {
                         routeDetails.map((routedetail, index) =>
-                            <tr key={routedetail.id}>
+                            <tr key={routedetail.trainScheduleId}>
 
                                 <td>{index + 1}</td>
 
@@ -93,8 +97,11 @@ const MakeTrainSchedule = () => {
 
                                 <td>{routedetail?.scheduleTime}</td>
                                 <td >{routedetail?.haltTime}</td>
+                                <td>PF #{routedetail?.platformNumber}</td>
+                                <td>{routedetail?.kilometers} KMS</td>
+                             
                                 <td>
-                                    <button className="button-del" onClick={() => deleteRouteHandler(routedetail.id)}>Delete</button>
+                                    <button className="button-del" onClick={() => deleteRouteHandler(routedetail.trainScheduleId)}>Delete</button>
                              <Link  to={'/addroutedetails'} state={{routedetail:routedetail}}><button className='button-update ' >Update</button></Link>  
                                 </td>
 
@@ -106,5 +113,6 @@ const MakeTrainSchedule = () => {
 
         </div>
     )
+
 }
-export default MakeTrainSchedule
+export default MakeTrainSchedule;
