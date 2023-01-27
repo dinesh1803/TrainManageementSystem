@@ -43,6 +43,7 @@ const PostRouteDetails = () => {
     useEffect(()=>{
         if(location.state?.routedetail){
             setPostRouteDetails(location.state?.routedetail)
+            setStateId(location.state?.routedetail?.train?.id)
         }
          else if(location.state?.train){
                     console.log(location.state?.train)
@@ -92,7 +93,7 @@ const PostRouteDetails = () => {
         axios.post("http://localhost:8080/admin/route-details/post", postRouteDetails)
             .then(
                 (res) => {
-                    navigate('/makeSchedule',  { state: { trainName:stateId } } )
+                    navigate('/makeSchedule',  { state: { trainName:postRouteDetails.train.id } } )
                     console.log(res.data);
                 }
             ).catch(
@@ -111,7 +112,7 @@ const PostRouteDetails = () => {
         <div className='stylefrom'>
             <div className='forms' >
                 <form onSubmit={(e) => submitHandler(e)}>
-                    <h3>Add Route Details</h3>
+                    <h3>Add Train Schedule</h3>
                     <div>
                         <label htmlFor='text'>TrainName</label><br></br>
                         <select name='train' id='id' onChange={changeHandler} value={postRouteDetails.train?.id} >

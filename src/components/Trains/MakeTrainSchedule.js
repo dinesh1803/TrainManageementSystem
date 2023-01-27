@@ -36,7 +36,7 @@ const MakeTrainSchedule = () => {
                     console.log(response.data)
 
 
-                    setRouteDetails(response.data)
+                    setRouteDetails( _.orderBy(response.data, "kilometers"))
                 }
             ).catch(
                 error => {
@@ -62,7 +62,7 @@ const MakeTrainSchedule = () => {
                     <button className='button-del '><ImExit /> Back</button>
                 </Link>
                 <u className='add'>
-                    <Link to="/addroutedetails" state={{train:trainName}}><button className='button-update '> Add More Station</button></Link>
+                    <Link to="/addroutedetails" state={{train:trainName}} ><button className='button-update '> Add More Station</button></Link>
                     {/* <Link to="/addroutedetails" state={{train:routeDetails[routeDetails.length-1]}}><button className='button-update '> Add More Station</button></Link>  */}
                 </u></div>
 

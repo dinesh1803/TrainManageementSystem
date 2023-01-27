@@ -84,7 +84,7 @@ const PostRoutes = () => {
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
                   </select> */}
 
-                    <input list='data' name='source' placeholder='search from station' onChange={changeHandler} ></input>
+                    <input list='data' name='source' placeholder='search from station' onChange={changeHandler} value={routes.source} ></input>
                     <datalist id='data' >
                     <option selected value={''}>select Station Name</option>
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}</option>)}
@@ -94,7 +94,7 @@ const PostRoutes = () => {
 
                     <div>
                         <label htmlFor='text'>To </label><br />
-                        <select name='destination' id='id' onChange={changeHandler} >
+                        <select name='destination' id='id' onChange={changeHandler} value={routes.destination}>
                       <option selected value={''}>select Station Name</option>
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
                   </select>
