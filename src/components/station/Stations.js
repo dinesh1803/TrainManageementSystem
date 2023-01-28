@@ -33,13 +33,7 @@ const Stations = () => {
     const deleteRouteHandler = (id, e) => {
 
         axios.delete(`http://localhost:8080/admin/station/delete/${id}`)
-            .then(response => {
-                console.log(response)
-                setStation(response.data)
-
-            }).catch(error => {
-                console.log(error)
-            })
+            .then(()=>{getStation()})
 
 
     }

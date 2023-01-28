@@ -11,6 +11,9 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import { MdTrain } from "react-icons/md";
 import "../User Component/Enduser.css";
+import {  TbArrowBigRightLines } from "react-icons/tb";
+import { FaTrain } from 'react-icons/fa';
+import { BsArrowLeftRight } from 'react-icons/bs';
 
 const ResultSearch = () => {
     const [routeDetails, setRouteDetails] = useState([])
@@ -41,33 +44,19 @@ const ResultSearch = () => {
 
     return (
         <div>
-            {/* { routeDetails.map((routedetail, index) =>
-           <div id='lts-error-block'>
-            <div className='white-timeline-bg '>
-                    
-                <div className='container-fluid'>
-                    <div className='row'>
-                        <div className='col-xs-12'>
-                            <div className='timeline-listing'>
-                                <div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            </div>
-           )
-} */}
+         
+<div className='header'>
+   <div style={{marginLeft:"9rem"}} > <FaTrain style={{fontSize:"3rem"}}/> &#160; &nbsp;&#160; &nbsp;（{routeDetails[0]?.train?.trainNumber}） ༺ 
+   {routeDetails[0]?.train?.trainName} ༻</div>
+   <div style={{marginRight:"2rem"}}>{routeDetails[0]?.station?.stationName} &#160; &nbsp; <BsArrowLeftRight/>  &#160; &nbsp; {routeDetails[routeDetails.length-1]?.station?.stationName}</div>
+   </div>
             {_.map(routeDetails,r=>{
                 return <Timeline position="alternate">
-                <TimelineItem>
+                <TimelineItem style={{marginRight:"7rem"}}>
                     <TimelineOppositeContent color="text.secondary">
                         <div>
                         {r.station?.stationCode}</div>
-                     <div>   {r?.scheduleTime}</div>
+                     <div>{r?.scheduleTime}</div>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                         <MdTrain color='blue' />
@@ -89,27 +78,3 @@ const ResultSearch = () => {
 }
 
 export default ResultSearch
-{/* <table  id="customers">
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Train Name</th>
-                        <th>Station Name</th>
-                        <th>Time</th>
-                        <th>Halt</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        routeDetails.map((routedetail, index) =>
-                            <tr key={routedetail.id}>
-                                <td>{index + 1}</td>
-                                <td>{routedetail?.train.trainName}</td>
-                                <td>{routedetail.station?.stationName}</td>
-                                <td>{routedetail?.scheduleTime}</td>
-                                <td>{routedetail?.haltTime}</td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table><br /> */}

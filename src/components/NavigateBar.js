@@ -28,7 +28,7 @@ export class NavigateBar extends Component {
    </div>
           </body>
           <footer>
-          since 2022
+          ༆ᴅɪɴᴇꜱʜ★ᴮᵒˢˢ࿐
           </footer>
        
         </div>
