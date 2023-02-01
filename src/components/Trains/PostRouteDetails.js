@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { ClockPicker, LocalizationProvider, TimePicker } from '@mui/lab';
 
 const PostRouteDetails = () => {
     const navigate = useNavigate()
@@ -53,13 +54,7 @@ const PostRouteDetails = () => {
     },[])
     
 
-    //for Train id
-    // useEffect(()=>{
-    //     if(location.state?.addMoreStations){
-    //         console.log(location.state?.addMoreStations.train.id)
-    //         setPostRouteDetails(location.state?.addMoreStations.train.id)
-    //     }
-    // },[])
+    
 
 
     const changeHandler = (e) => {
@@ -79,8 +74,6 @@ const PostRouteDetails = () => {
             const train = { id: postRouteDetails.train }
             postRouteDetails.train = train
         }
-
-       
 
         if (!postRouteDetails.station) return
 
@@ -102,10 +95,6 @@ const PostRouteDetails = () => {
                 }
             )
     }
-//     const searchStationId=(e)=>{
-//        let train=_.filter(station,s=>s.stationName===e.target.value)
-//        setPostRouteDetails(prev => ({ ...prev, [e.target.name]: train[0]?.id }))
-//   }
 
     
     return (
@@ -124,16 +113,7 @@ const PostRouteDetails = () => {
                     </div><br />
                     <div >
                         <label htmlFor='text'>Station Name</label><br></br>
-                        {/* <select name='station' id='id' onChange={changeHandler} value={postRouteDetails.station?.id}>
-                      
-                            <option selected value={''}>select Station Name</option>
-                            {_.map(station, stations => <option key={stations.id} value={stations.id} >{stations.stationName}<br /></option>)}
-                        </select> */}
-                               {/* <input list='data' name='station' placeholder='search from station' onChange={changeHandler}></input>
-                    <datalist id='data' >
-                    <option selected value={''}>select Station Name</option>
-                      {_.map(station, stations => <option key={stations.id} value={stations.id} >{stations.stationName}</option>)}
-                    </datalist> */}
+                
                              <input list='data' name='station' placeholder='search from station' onChange={changeHandler}  autocomplete="off"></input>
                     <datalist id='data' >
                     <option selected value={''}>select Station Name</option>
@@ -142,7 +122,7 @@ const PostRouteDetails = () => {
                     </div><br />
                     <div >
                         <label htmlFor='text'>Arraival Time</label><br></br>
-                        <input type={"time"} placeholder="HH:mm" name='scheduleTime' value={postRouteDetails.scheduleTime} onChange={changeHandler} required ></input><br/><br/>
+                        <input type={"time"} placeholder="HH:mm" name='scheduleTime' onChange={changeHandler} required ></input><br/><br/>
                     </div>
                     <div >
                         <label htmlFor='text'>Halt Time</label><br></br>

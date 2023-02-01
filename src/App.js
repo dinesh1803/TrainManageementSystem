@@ -21,6 +21,9 @@ import MakeTrainSchedule from './components/Trains/MakeTrainSchedule';
 import PostRouteDetails from './components/Trains/PostRouteDetails';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NewResultSearch from './components/NewUserComponent/NewResultSearch';
+import NewSearchTrain from './components/NewUserComponent/NewSearchTrain';
+import NewSearchBox from './components/NewUserComponent/NewSearchBox';
 
 
 
@@ -58,6 +61,11 @@ import 'react-toastify/dist/ReactToastify.css';
           <Route path='/search' element={<ResultSearch/>} ></Route>
           <Route path='/searchTrain' element={<SearchTrain/>} ></Route>
           <Route path='/usersearch' element={<SearchBox/>} ></Route>
+
+          new search
+          <Route path='/newsearch' element={<NewResultSearch/>} ></Route>
+          <Route path='/newsearchTrain' element={<NewSearchTrain/>} ></Route>
+          <Route path='/newusersearch' element={<NewSearchBox/>} ></Route>
         </Routes>
     
     </div>

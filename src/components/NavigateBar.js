@@ -20,7 +20,7 @@ export class NavigateBar extends Component {
         
          <a href="/station"><button className='button-home'><FaTasks/> Station Management</button></a>
           <a href="/timeschedule"><button className='button-home'><AiOutlineSchedule />  Train Schedule</button></a>
-          <a href="/usersearch"><button className='button-home'><FaSearchPlus/>Search Train</button></a>
+          <a href="/newusersearch"><button className='button-home'><FaSearchPlus/>Search Train</button></a>
           </nav>
           <body>
    <div>

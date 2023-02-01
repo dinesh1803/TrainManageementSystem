@@ -4,37 +4,30 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
-const SearchTrain = () => {
+const NewSearchTrain = () => {
 
   const [trains, setTrains] = useState([])
 
-   const location= useLocation()
 
-  // useEffect(()=>{
-  // setProps(lo)
-  // },[])
+   const location= useLocation()
 
 
 
   useEffect(() => {
     if(location.state?.route){
+ 
     console.log(location.state?.route)
-    const source=location.state.route?.source
-    const destination=location.state.route?.destination
+    const source=location.state.route?.source?.id
+    const destination=location.state.route?.destination?.id
     getRoutes(source,destination);
     }
-    else if(location.state?.resultSearch){
-      console.log(location.state?.resultSearch.route.source+"varutha");
-       const source=location.state?.resultSearch.route?.source
-       const destination=location.state?.resultSearch.route?.destination
-       getRoutes(source,destination)
-    }
+  
   }, [])
 
   const getRoutes = (source,destination) => {
     console.log(source)
     console.log(destination)
-    axios.get(`http://localhost:8080/admin/traindetails/getBySourceAndDest?source=${source}&destination=${destination}`)
+    axios.get(`http://localhost:8080/admin/route-details/gettrainid?source=${source}&dest=${destination}`)
       .then(response => {
         console.log(response.data)
 
@@ -71,18 +64,18 @@ const SearchTrain = () => {
                 <td> {train.trainName} </td>
                 <td> {train.route?.source} </td>
                 <td>{train.route?.destination}</td>
-                <td><Link to={'/search'} state={{ train: train}}><button>Train Schedule</button></Link></td>
+                <td><Link to={'/newsearch'} state={{ train: train}}><button>Train Schedule</button></Link></td>
               </tr>
             )
           }
 
         </tbody>
       </table><br />
-      <Link to='/usersearch'>
+      <Link to='/newusersearch'>
         <button >Hit back to search</button><br /><br />
       </Link>
     </div>
   )
 }
 
-export default SearchTrain
+export default NewSearchTrain

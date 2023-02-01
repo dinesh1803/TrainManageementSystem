@@ -11,7 +11,6 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import { MdTrain } from "react-icons/md";
 import "../User Component/Enduser.css";
-import {  TbArrowBigRightLines } from "react-icons/tb";
 import { FaTrain } from 'react-icons/fa';
 import { BsArrowLeftRight } from 'react-icons/bs';
 
@@ -46,13 +45,13 @@ const ResultSearch = () => {
         <div>
          
 <div className='header'>
-   <div style={{marginLeft:"9rem"}} > <FaTrain style={{fontSize:"3rem"}}/> &#160; &nbsp;&#160; &nbsp;（{routeDetails[0]?.train?.trainNumber}） ༺ 
+   <div style={{marginLeft:"5rem"}} > <FaTrain style={{fontSize:"3rem"}}/> &#160; &nbsp;&#160; &nbsp;（{routeDetails[0]?.train?.trainNumber}） ༺ 
    {routeDetails[0]?.train?.trainName} ༻</div>
-   <div style={{marginRight:"2rem"}}>{routeDetails[0]?.station?.stationName} &#160; &nbsp; <BsArrowLeftRight/>  &#160; &nbsp; {routeDetails[routeDetails.length-1]?.station?.stationName}</div>
+   <div style={{marginRight:"6rem"}}>{routeDetails[0]?.station?.stationName} &#160; &nbsp; <BsArrowLeftRight/>  &#160; &nbsp; {routeDetails[routeDetails.length-1]?.station?.stationName}</div>
    </div>
             {_.map(routeDetails,r=>{
                 return <Timeline position="alternate">
-                <TimelineItem style={{marginRight:"7rem"}}>
+                <TimelineItem style={{marginRight:"14rem"}}>
                     <TimelineOppositeContent color="text.secondary">
                         <div>
                         {r.station?.stationCode}</div>
