@@ -69,11 +69,12 @@ const PostRouteDetails = () => {
     const submitHandler = (e) => {
         e.preventDefault();
 //console.log(postRouteDetails, "postRouteDetails");
-        if (!postRouteDetails.train) return
-        if(typeof(postRouteDetails.train)==='string'){
-            const train = { id: postRouteDetails.train }
-            postRouteDetails.train = train
-        }
+        // if (!postRouteDetails.train) return
+        // if(typeof(postRouteDetails.train)==='string'){
+        //     const train = { id: postRouteDetails.train }
+        //     postRouteDetails.train = train
+        // }
+
 
         if (!postRouteDetails.station) return
 
@@ -104,7 +105,7 @@ const PostRouteDetails = () => {
                     <h3>Add Train Schedule</h3>
                     <div>
                         <label htmlFor='text'>TrainName</label><br></br>
-                        <select name='train' id='id' onChange={changeHandler} value={postRouteDetails.train?.id} >
+                        <select name='train' id='id' onChange={changeHandler} value={postRouteDetails.train?.id } >
                         <option  className='dropdown-cont' selected value={''} >select Train Name</option>
                             {_.map(addTrain, train => <option  key ={train.id} value={train.id}>{train.trainName}</option>)}
                         </select>
