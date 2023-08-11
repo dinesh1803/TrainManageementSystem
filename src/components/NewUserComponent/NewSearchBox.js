@@ -19,7 +19,8 @@ const NewSearchBox = () => {
    
 
     useEffect(() => {
-        axios.get('http://localhost:8080/admin/station/get').then(res => {
+        axios.get('http://192.168.1.15:8081/admin/station/get').then(res => {
+            console.log(res)
             setStation(res.data)
         })
     }, [])

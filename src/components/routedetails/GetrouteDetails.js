@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
+import axiosHeader from '../../utills/Interceptor';
 
 const GetrouteDetails = () => {
 
@@ -15,12 +16,12 @@ const GetrouteDetails = () => {
     }, [])
 
     const getRouteDetails = () => {
-        axios.get(`http://localhost:8080/admin/route-details/get`)
+        axiosHeader.get(`/route-details/get`)
             .then(
                 response => {
                     console.log(response.data)
-                    setRouteDetails(_.orderBy(response.data,"train.id"))
-                    setFilterRouteDetails(response.data)
+                    setRouteDetails(_.orderBy(response,"train.id"))
+                    setFilterRouteDetails(response)
                 }
             ).catch(
                 error => {

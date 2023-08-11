@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
+import axiosHeader from '../../utills/Interceptor';
 
 const Stations = () => {
 
@@ -16,12 +17,11 @@ const Stations = () => {
     }, [])
 
     const getStation = () => {
-        axios.get(`http://localhost:8080/admin/station/get`)
+        axiosHeader.get(`/station/get`)
             .then(
                 response => {
-                    console.log(response.data)
-                    setStation(_.orderBy(response.data,"id"))
-                    setFilterStation(response.data)
+                    setStation(_.orderBy(response,"id"))
+                    setFilterStation(response)
                 }
             ).catch(
                 error => {
@@ -32,7 +32,7 @@ const Stations = () => {
 
     const deleteRouteHandler = (id, e) => {
 
-        axios.delete(`http://localhost:8080/admin/station/delete/${id}`)
+        axiosHeader.delete(`/station/delete/${id}`)
             .then(()=>{getStation()})
 
 

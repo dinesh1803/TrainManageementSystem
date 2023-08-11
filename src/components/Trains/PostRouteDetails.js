@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { ClockPicker, LocalizationProvider, TimePicker } from '@mui/lab';
+import axiosHeader from '../../utills/Interceptor';
 
 const PostRouteDetails = () => {
     const navigate = useNavigate()
@@ -21,10 +22,9 @@ const PostRouteDetails = () => {
     })
     //Train dropdown
     useEffect(() => {
-        axios.get("http://localhost:8080/admin/traindetails/get")
+        axiosHeader.get("/traindetails/get")
             .then(response => {
-                console.log(response.data)
-                setAddTrain(response.data)
+                setAddTrain(response)
             })
     }, [])
 
@@ -33,8 +33,7 @@ const PostRouteDetails = () => {
         axios.get(`http://localhost:8080/admin/station/get`)
             .then(
                 response => {
-                    console.log(response.data)
-                    setStation(response.data)
+                    setStation(response)
              
                 }
             )
@@ -84,7 +83,7 @@ const PostRouteDetails = () => {
             postRouteDetails.station = station
         }
         console.log(postRouteDetails, "here");
-        axios.post("http://localhost:8080/admin/route-details/post", postRouteDetails)
+        axiosHeader.post("/route-details/post", postRouteDetails)
             .then(
                 (res) => {
                     navigate('/makeSchedule',  { state: { trainName:postRouteDetails.train.id } } )

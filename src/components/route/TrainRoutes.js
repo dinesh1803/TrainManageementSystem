@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import '../../css/border.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HomeIcon from '@mui/icons-material/Home';
+import axiosHeader from '../../utills/Interceptor';
 
 
 const TrainRoutes = () => {
@@ -17,9 +18,10 @@ const TrainRoutes = () => {
     }, [])
 
     const getRoutes = () => {
-        axios.get("http://localhost:8080/admin/route/get")
+        axiosHeader.get("/route/get")
             .then(response => {
-                setRoutes(response.data)
+                console.log(response);
+                setRoutes(response)
             }).catch(error => {
                 console.log(error)
             })
@@ -27,9 +29,9 @@ const TrainRoutes = () => {
 
 
     const deleteRouteHandler = (routeId, e) => {
-        axios.delete(`http://localhost:8080/admin/route/delete/${routeId}`)
+        axiosHeader.delete(`/route/delete/${routeId}`)
             .then(response => {
-                setRoutes(response.data)
+                setRoutes(response)
             }).catch(error => {
                 console.log(error)
             })
@@ -65,13 +67,13 @@ const TrainRoutes = () => {
 
                 <tbody>
                     {
-                        routes.map((route, index) =>
-                            <tr key={route.routeId}>
+                        routes && routes.map((route, index) =>
+                            <tr key={route?.routeId}>
                                 <td>{index + 1}</td>
-                                <td> {route.routeId}</td>
-                                <td>{route.routeName}</td>
-                                <td> {route.source}</td>
-                                <td> {route.destination}</td>
+                                <td> {route?.routeId}</td>
+                                <td>{route?.routeName}</td>
+                                <td> {route?.source}</td>
+                                <td> {route?.destination}</td>
                                 <td  >
                                     <button className="button-del" onClick={() => deleteRouteHandler(route.routeId)}>Delete</button> </td>
                                 <td  >   <Link to={'/addroutes'} state={{ route: route }}><button className='button-update ' >Update</button></Link>

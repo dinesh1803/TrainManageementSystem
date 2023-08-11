@@ -27,11 +27,11 @@ const NewSearchTrain = () => {
   const getRoutes = (source,destination) => {
     console.log(source)
     console.log(destination)
-    axios.get(`http://localhost:8080/admin/route-details/gettrainid?source=${source}&dest=${destination}`)
+    axios.get(`http://192.168.1.15:8081/admin/route-details/gettrainid?source=${source}&dest=${destination}`)
       .then(response => {
         console.log(response.data)
 
-        setTrains(response.data)
+        setTrains(response?.data)
       })
       .catch(error => {
         console.log(error)
@@ -56,14 +56,14 @@ const NewSearchTrain = () => {
         <tbody>
           {
             trains.map((train, index) =>
-              <tr key={train.id}>
+              <tr key={train?.id}>
                 <td>{index + 1} </td>
 
-                <td>{train.route.routeName}</td>
+                <td>{train?.route?.routeName}</td>
                 <td> {train.trainNumber} </td>
-                <td> {train.trainName} </td>
-                <td> {train.route?.source} </td>
-                <td>{train.route?.destination}</td>
+                <td> {train?.trainName} </td>
+                <td> {train?.route?.source} </td>
+                <td>{train?.route?.destination}</td>
                 <td><Link to={'/newsearch'} state={{ train: train}}><button>Train Schedule</button></Link></td>
               </tr>
             )

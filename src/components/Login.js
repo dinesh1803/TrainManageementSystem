@@ -1,13 +1,31 @@
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../css/View.css'
 
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { errorHandler } from '../utills/ErrorHandler'
 
 export const Login=()=> {
+  const nav=useNavigate()
+
+const[login,setLogin]=useState({
+
+})
+const changeHandler=(e)=>{
+  setLogin(prev=>({...prev,[e.target.name]:e.target.value}))
+}
 
   const submitDetails = (e) => {
-    e.PreventDefault();
+    e.preventDefault();
+    axios.post(`http://192.168.1.15:8081/admin/login`,login).then((res)=>{
+      console.log(res, "response")
+      localStorage.setItem("token",res.data)
+      nav("/nav")
+    }).catch((error)=>{
+      console.log(error)
+      errorHandler(error)
+    })
   }
 
 
@@ -20,14 +38,13 @@ export const Login=()=> {
           <form onSubmit={(e)=>submitDetails(e)}>
 
             <label htmlFor='text'>email</label><br />
-            <input type='search' placeholder='email' required /><br /><br />
+            <input type='search' placeholder='email' name='email' value={login.email} onChange={changeHandler} required /><br /><br />
 
             <label htmlFor='text'>password</label><br />
-            <input type='search' placeholder='password' required /><br /><br />
+            <input type='search' placeholder='password' name='password' value={login.password} onChange={changeHandler} required /><br /><br />
 
-            <Link to='/nav'>
               <button >Sign in</button><br/><br />
-            </Link>
+           
           </form>
           <Link to='/register'>
             If you don't have an account ? sign up

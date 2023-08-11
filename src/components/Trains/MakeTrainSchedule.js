@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ImExit } from 'react-icons/im';
+import axiosHeader from '../../utills/Interceptor';
 
 const MakeTrainSchedule = () => {
 
@@ -30,13 +31,12 @@ const MakeTrainSchedule = () => {
     }, [])
 
     const getRouteDetails = (value) => {
-        axios.get(`http://localhost:8080/admin/route-details/gettrain?trainName=${value}`)
+        axiosHeader.get(`/route-details/gettrain?trainName=${value}`)
             .then(
                 response => {
-                    console.log(response.data)
 
 
-                    setRouteDetails( _.orderBy(response.data, "kilometers"))
+                    setRouteDetails( _.orderBy(response, "kilometers"))
                 }
             ).catch(
                 error => {
@@ -46,7 +46,7 @@ const MakeTrainSchedule = () => {
     }
 
     const deleteRouteHandler = (id) => {
-        axios.delete(`http://localhost:8080/admin/route-details/delete/${id}`)
+        axiosHeader.delete(`/route-details/delete/${id}`)
             .then(res=>{
                 getRouteDetails(trainName)
             })

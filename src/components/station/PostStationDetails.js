@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axiosHeader from '../../utills/Interceptor';
 
 const PostStationDetails = () => {
     const navigate = useNavigate()
@@ -22,7 +23,7 @@ const PostStationDetails = () => {
 
     const clickHandler = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8080/admin/station/post", stations)
+        axiosHeader.post("/station/post", stations)
             .then(
                 response => {
                     navigate('/station')

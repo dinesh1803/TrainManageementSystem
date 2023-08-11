@@ -3,6 +3,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { ImExit } from 'react-icons/im';
 import { Link, NavLink } from 'react-router-dom';
+import axiosHeader from '../../utills/Interceptor';
 
 
 const GetTrain = () => {
@@ -14,10 +15,10 @@ const GetTrain = () => {
   }, [])
 
   const getRoutes = () => {
-    axios.get("http://localhost:8080/admin/traindetails/get")
+    axiosHeader.get("/traindetails/get")
       .then(response => {
-        console.log(response.data)
-        setTrains(_.orderBy(response.data, "id"))
+        console.log(response)
+        setTrains(_.orderBy(response, "id"))
       })
       .catch(error => {
         console.log(error)
@@ -26,10 +27,10 @@ const GetTrain = () => {
 
 
   const deleteRouteHandler = (id) => {
-    axios.delete(`http://localhost:8080/admin/traindetails/delete/${id}`)
+    axiosHeader.delete(`/traindetails/delete/${id}`)
       .then(response => {
         console.log(response)
-        setTrains(response.data)
+        setTrains(response)
 
       }).catch(error => {
         console.log(error)

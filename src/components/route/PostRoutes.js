@@ -4,6 +4,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axiosHeader from '../../utills/Interceptor';
 
 
 const PostRoutes = () => {
@@ -12,9 +13,7 @@ const PostRoutes = () => {
 
 
     const [routes, setRoutes] = useState({
-        routeName: '',
-        source: '',
-        destination: ''
+     
     })
 
     const[station,setStation]=useState([])
@@ -28,19 +27,11 @@ const PostRoutes = () => {
 
     //dropdown
     useEffect(()=>{
-   axios.get(`http://localhost:8080/admin/station/get`)
+        axiosHeader.get(`/station/get`)
         .then(
             response => {
-                console.log(response.data)
-                setStation(_.orderBy(response.data,"id"))
-                // let fromStation=[]
-                // const stationName=_.map(response.data,c=>{
-                //     let name={};
-                //     name.label=c.stationName;
-                //     name.id=c.id
-                //     fromStation.push(name)
-                // })
-                // setFromStation(fromStation);
+                setStation(_.orderBy(response,"id"))
+              
     })
 },[])
 
@@ -50,11 +41,10 @@ const PostRoutes = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8080/admin/route/post', routes)
+        axiosHeader.post('/route/post', routes)
 
             .then(response => {
                 navigate('/routes')
-                console.log(response.data);
             }).catch(error => {
                 console.log(error)
                 toast.error("From and To station can not be same");
@@ -68,23 +58,17 @@ const PostRoutes = () => {
             <div className='forms' >
                 <form onSubmit={submitHandler}>
                     <h3>Add more Routes</h3>
+                   
                     {/* <div>
-                   {<ComboBox data={fromStation} />}
-                    </div> */}
-                    <div>
                         < label htmlFor='text'> Route Name </label><br />
     
                         <input type="text" name="routeName" value={routes.routeName} onChange={changeHandler} required /><br /><br />
-                    </div>
+                    </div> */}
                     <div>
                         < label htmlFor='text'> From </label><br />
                       
-                        {/* <select name='source' id='id' onChange={changeHandler}  >                     
-                      <option selected value={''}>select Station Name</option>
-                      {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
-                  </select> */}
-
-                    <input list='data' name='source' placeholder='search from station' onChange={changeHandler} value={routes.source} ></input>
+                 
+                    <input list='data' name='source' placeholder='search From station' onChange={changeHandler} value={routes.source} ></input>
                     <datalist id='data' >
                     <option selected value={''}>select Station Name</option>
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}</option>)}
@@ -94,10 +78,11 @@ const PostRoutes = () => {
 
                     <div>
                         <label htmlFor='text'>To </label><br />
-                        <select name='destination' id='id' onChange={changeHandler} value={routes.destination}>
+                        <input list='data' name='destination' placeholder='select To station' onChange={changeHandler} value={routes.destination} />
+                        <datalist id='data'>
                       <option selected value={''}>select Station Name</option>
                       {_.map(station, stations => <option key={stations.id} value={stations.stationName} >{stations.stationName}<br /></option>)}
-                  </select>
+                      </datalist>
                   </div>
                     <div>
                         <button className='button-update ' type="submit" >{routes.id ? "Update" : "Save"}</button><br />

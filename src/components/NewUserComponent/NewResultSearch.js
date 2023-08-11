@@ -27,7 +27,7 @@ const NewResultSearch = () => {
   }, [])
 
   const getRouteDetails = (value) => {
-      axios.get(`http://localhost:8080/admin/route-details/gettrain?trainName=${value}`)
+      axios.get(`http://192.168.1.15:8081/admin/route-details/gettrain?trainName=${value}`)
           .then(
               response => {
                   console.log(response.data)

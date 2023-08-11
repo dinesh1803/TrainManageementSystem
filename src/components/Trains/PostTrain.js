@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import _ from 'lodash'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axiosHeader from '../../utills/Interceptor';
 
 const PostTrain = () => {
 
@@ -14,8 +15,7 @@ const PostTrain = () => {
   const [addRoute, setAddRoute] = useState([])
 
   const [trainDetails, setTrainDetais] = useState({
-    trainNumber: '',
-    trainName: ''
+  
   })
 
   useEffect(() => {
@@ -32,9 +32,9 @@ const PostTrain = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/route/get")
+    axiosHeader.get("/route/get")
       .then(response => {
-        setAddRoute(response.data)
+        setAddRoute(response)
       })
   },[])
 
@@ -50,7 +50,7 @@ const PostTrain = () => {
       trainDetails.route = route;
     }
 
-    axios.post('http://localhost:8080/admin/traindetails/post', trainDetails)
+    axiosHeader.post('/traindetails/post', trainDetails)
       .then(
         response => {
           navigate('/trains')
